@@ -1,0 +1,28 @@
+# taints and tollerations
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-selector-demo-1
+  labels:
+    purpose: taints-toleration
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: Always
+  nodeSelector:
+    disktype: ssd
+  tolerations:
+  - key: "key1"
+    value: "value1"
+    operator: "Equal"
+    effect: "NoExecute"
+  - key: "key1"
+    value: "value1"
+    operator: "Equal"
+    effect: "NoSchedule"
+    
+  
+  # kubectl taint nodes node1 key1=value1:NoSchedule
+  # kubectl taint nodes node1 key1=value1:NoExecute
