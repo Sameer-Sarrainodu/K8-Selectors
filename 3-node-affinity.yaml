@@ -7,20 +7,20 @@ spec:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
-        - matchExpressions:
-          - key: hardware
-            operator: In
-            values:
-            - gpu
-      # - gpuu
-      # preferredDuringSchedulingIgnoredDuringExecution:
-      #   - weight: 1
-      #     preference:
-      #       matchExpressions:
-      #         - key: another-node-label-key
-      #           operator: In
-      #           values:
-      #             - another-node-label-key
+          - matchExpressions:
+              - key: hardware
+                operator: In
+                values:
+                  - gpu
+                  - gpuu
+                  # preferredDuringSchedulingIgnoredDuringExecution:
+                  #   - weight: 1
+                  #     preference:
+                  #       matchExpressions:
+                  #         - key: another-node-label-key
+                  #           operator: In
+                  #           values:
+                  #             - another-node-label-key
   containers:
     - name: with-node-affinfity
       image: nginx
